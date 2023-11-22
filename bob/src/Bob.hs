@@ -4,8 +4,11 @@ import Data.Char
 
 responseFor :: String -> String
 responseFor xs
-  | all (\x -> isUpper x || isSpace x) (init xs) && last xs /= '?' = "Whoa, chill out!"
+  | containsUppercaseChar && last xs /= '?' = "Whoa, chill out!"
   | all isSpace xs = "Fine. Be that way!"
-  | all (\x -> isUpper x || isSpace x) (init xs) && last xs == '?' = "Calm down, I know what I'm doing!"
-  | last xs == '?' = "Sure."
+  | containsUppercaseChar && last xs == '?' = "Calm down, I know what I'm doing!"
+  | last trimmed == '?' = "Sure."
   | otherwise = "Whatever."
+    where
+      containsUppercaseChar = any isLetter xs && all isUpper (filter isLetter xs)
+      trimmed = filter (not . isSpace) xs

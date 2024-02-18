@@ -4,7 +4,7 @@ reverseString :: String -> String
 reverseString str =
   rev str
   where rev [] = []
-        rev (x:xs) = reverse xs ++ [x]
+        rev (x:xs) = rev xs ++ [x]
 
 
 -- If I want to change the function signature

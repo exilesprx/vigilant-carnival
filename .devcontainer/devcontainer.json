@@ -5,6 +5,9 @@
   "customizations": {
     // Configure properties specific to VS Code.
     "vscode": {
+      "settings": {
+        "haskell.manageHLS": "GHCup"
+      },
       // Add the IDs of extensions you want installed when the container is created.
       "extensions": [
         "haskell.haskell"

@@ -6,7 +6,12 @@
     // Configure properties specific to VS Code.
     "vscode": {
       "settings": {
-        "haskell.manageHLS": "GHCup"
+        "haskell.manageHLS": "GHCup",
+        "haskell.toolchain": {
+          "ghc": "9.2",
+          "hls": "recommended",
+          "cabal": "recommended"
+        }
       },
       // Add the IDs of extensions you want installed when the container is created.
       "extensions": [

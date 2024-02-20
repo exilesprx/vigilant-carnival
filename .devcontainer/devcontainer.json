@@ -10,7 +10,8 @@
         "haskell.toolchain": {
           "ghc": "9.2",
           "hls": "recommended",
-          "cabal": "recommended"
+          "cabal": "recommended",
+          "stack": "recommended"
         }
       },
       // Add the IDs of extensions you want installed when the container is created.

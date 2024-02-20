@@ -1,13 +1,10 @@
 {
-  "name": "Haskell (Community)",
-  "build": {
-    "dockerfile": "Dockerfile"
-  },
+  "name": "Haskell",
+  "dockerFile": "Dockerfile",
   // Configure tool-specific properties.
   "customizations": {
     // Configure properties specific to VS Code.
     "vscode": {
-      // Set *default* container specific settings.json values on container create.
       "settings": {
         "haskell.manageHLS": "GHCup"
       },
@@ -17,6 +14,5 @@
       ]
     }
   },
-  // Comment out to connect as root instead. To add a non-root user, see: https://aka.ms/vscode-remote/containers/non-root.
-  "remoteUser": "vscode"
+  "remoteUser": "haskell"
 }

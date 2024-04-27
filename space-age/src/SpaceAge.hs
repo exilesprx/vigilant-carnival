@@ -1,15 +1,16 @@
-module SpaceAge (Planet(..), ageOn) where
+module SpaceAge (Planet (..), ageOn) where
 
-data Planet = Mercury
-            | Venus
-            | Earth
-            | Mars
-            | Jupiter
-            | Saturn
-            | Uranus
-            | Neptune
+data Planet
+  = Mercury
+  | Venus
+  | Earth
+  | Mars
+  | Jupiter
+  | Saturn
+  | Uranus
+  | Neptune
 
-relativeOrbitPeriod:: Planet -> Float
+relativeOrbitPeriod :: Planet -> Float
 relativeOrbitPeriod Mercury = 0.2408467
 relativeOrbitPeriod Venus = 0.61519726
 relativeOrbitPeriod Earth = 1.0
@@ -21,5 +22,6 @@ relativeOrbitPeriod Neptune = 164.79132
 
 ageOn :: Planet -> Float -> Float
 ageOn planet seconds = seconds / (earthYears * earthSeconds)
-  where earthSeconds = 31557600
-        earthYears = relativeOrbitPeriod planet
+ where
+  earthSeconds = 31557600
+  earthYears = relativeOrbitPeriod planet

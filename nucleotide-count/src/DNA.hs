@@ -11,8 +11,12 @@ initial = Map.fromList [(A, 0), (C, 0), (G, 0), (T, 0)]
 nucleotideCounts :: String -> Either String (Map Nucleotide Int)
 nucleotideCounts [] = Right initial
 nucleotideCounts (x : xs)
-  | x == 'A' = fmap (Map.insertWith (+) A 1) (nucleotideCounts xs) -- we don't need Right the base case provides it
-  | x == 'C' = fmap (Map.insertWith (+) C 1) (nucleotideCounts xs)
-  | x == 'G' = fmap (Map.insertWith (+) G 1) (nucleotideCounts xs)
-  | x == 'T' = fmap (Map.insertWith (+) T 1) (nucleotideCounts xs)
+  | x `elem` "ACGT" = fmap (Map.insertWith (+) (toNucleotide x) 1) (nucleotideCounts xs) -- we don't need Right the base case provides it
   | otherwise = Left "error"
+
+toNucleotide :: Char -> Nucleotide
+toNucleotide 'A' = A
+toNucleotide 'C' = C
+toNucleotide 'G' = G
+toNucleotide 'T' = T
+toNucleotine _ = error "invalid nucleotide"

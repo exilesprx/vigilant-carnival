@@ -8,4 +8,5 @@ sumOfMultiples factors limit = sum [x | x <- [1 .. limit - 1], (isMultiple x) fa
 
 -- the any function can be used to check if any of the
 -- factors are multiples of x which removes duplicates
--- because once found, the other factors are not checked
+-- because once found, x is added to the array and any
+-- remaining factors are ignored

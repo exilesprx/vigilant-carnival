@@ -1,12 +1,10 @@
 module SumOfMultiples (sumOfMultiples) where
 
 sumOfMultiples :: [Integer] -> Integer -> Integer
-sumOfMultiples factors limit = sum (unique list)
+sumOfMultiples factors limit = sum [x | x <- [1 .. limit - 1], (isMultiple x) factors]
  where
-  list = [x | x <- [1 .. limit - 1], y <- factors, y /= 0, x `mod` y == 0]
+  isMultiple x = any (\factor -> factor /= 0 && x `mod` factor == 0)
 
-unique :: Eq a => [a] -> [a]
-unique [] = []
-unique (x : xs)
-  | x `elem` xs = unique xs
-  | otherwise = x : unique xs
+-- the any function can be used to check if any of the
+-- factors are multiples of x which removes duplicates
+-- because once found, the other factors are not checked

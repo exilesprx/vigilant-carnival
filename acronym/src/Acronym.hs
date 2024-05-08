@@ -2,9 +2,11 @@ module Acronym (abbreviate) where
 
 import Data.Char (toUpper)
 
--- first slip on spaces
--- then grab first letter of each word
--- then make them uppercase
--- then concatenate them
 abbreviate :: String -> String
-abbreviate xs = [toUpper (head x) | x <- words xs]
+abbreviate xs = [toUpper (head x) | x <- words (replacePunctuation xs)]
+
+replacePunctuation :: String -> String
+replacePunctuation [] = []
+replacePunctuation (x : xs)
+  | x `elem` "-_" = ' ' : replacePunctuation xs
+  | otherwise = x : replacePunctuation xs

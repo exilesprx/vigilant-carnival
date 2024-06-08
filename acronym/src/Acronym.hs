@@ -1,12 +1,19 @@
 module Acronym (abbreviate) where
 
-import Data.Char (isLetter, toUpper)
+import Data.Char (isLower, isUpper, toUpper)
 
 abbreviate :: String -> String
-abbreviate xs = [toUpper (head x) | x <- words (replacePunctuation xs)]
+abbreviate xs = concat [grabUppers x | x <- words (replaceDashes xs)]
 
-replacePunctuation :: String -> String
-replacePunctuation [] = []
-replacePunctuation (x : xs)
-  | (not . isLetter) x = ' ' : replacePunctuation xs
-  | otherwise = x : replacePunctuation xs
+replaceDashes :: String -> String
+replaceDashes [] = []
+replaceDashes (x : xs)
+  | x `elem` "-" = ' ' : replaceDashes xs
+  | otherwise = x : replaceDashes xs
+
+grabUppers :: String -> String
+grabUppers [] = []
+grabUppers xs
+  | all isUpper xs = [head xs]
+  | all isLower xs = [toUpper (head xs)]
+  | otherwise = filter isUpper xs
